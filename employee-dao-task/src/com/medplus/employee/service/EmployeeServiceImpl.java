@@ -25,13 +25,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public int updateEmployee(Employee employee) {
+	public int updateEmployee(Employee employee, String deptName) {
+		DepartmentService service = new DepartmentServiceImpl();
+		Department dept = service.getDeptno(deptName);
+		employee.setDeptno(dept.getDeptno());
 		return dao.updateEmployee(employee);
 	}
 
 	@Override
-	public List<Employee> getAll() {
-		return dao.getAll();
+	public void getAll() {
+		List<Employee> emplist = dao.getAll();
+		DepartmentService service = new DepartmentServiceImpl();
+		emplist.forEach(e -> {
+			System.out.println(e.getEmpcode() + " " + e.getEmpname() + " " + e.getSalary() + " " + 
+		e.getDoj() + " " + service.getDeptName(e.getDeptno()));
+		});
 	}
 
 	@Override

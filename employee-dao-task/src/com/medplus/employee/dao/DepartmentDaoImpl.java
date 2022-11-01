@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.medplus.employee.beans.Department;
 import com.medplus.employee.utils.DBConnection;
@@ -59,7 +61,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 	@Override
 	public String getDeptName(int deptno) {
 		conn = DBConnection.getConnection();
-		String deptName = "";
+		String deptName = null;
 		try {
 			pst = conn.prepareStatement(DBQueries.GETDEPTNAMEBYDEPTNO);
 			pst.setInt(1, deptno);
@@ -70,6 +72,29 @@ public class DepartmentDaoImpl implements DepartmentDao {
 			e.printStackTrace();
 		}
 		return deptName;
+	}
+
+	@Override
+	public List<Department> getdepts() {
+		conn = DBConnection.getConnection();
+		List<Department> depts = new ArrayList<Department>();
+		try {
+			pst = conn.prepareStatement(DBQueries.GETALLDEPARTMENTS);
+			rs = pst.executeQuery();
+			while(rs.next()) {
+				Department dept = new Department();
+				dept.setDeptno(rs.getInt(1));
+				dept.setDeptName(rs.getString(2));
+				dept.setLocation(rs.getString(3));
+				depts.add(dept);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DBConnection.close();
+		}
+		return depts;
 	}
 
 }

@@ -19,6 +19,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public String getDeptName(int deptno) {
-		return null;
+		return dao.getDeptName(deptno);
 	}
 }

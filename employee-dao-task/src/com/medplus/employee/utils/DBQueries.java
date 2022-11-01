@@ -9,4 +9,5 @@ public class DBQueries {
 	public static final String ADDDEP = "insert into department values(?,?,?)";
 	public static final String GETDEPTNOBYDEPTNAME = "select * from department where dep_name = ?";
 	public static final String GETDEPTNAMEBYDEPTNO = "select dep_name from department where deptno = ?";
+	public static final String GETALLDEPARTMENTS = "select * from department";
 }

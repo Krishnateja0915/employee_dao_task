@@ -16,11 +16,10 @@ public class UpdateEmployee {
 		Employee emp = new Employee(Integer.parseInt(br.readLine()), br.readLine(),
 				Double.parseDouble(br.readLine()), br.readLine());
 		EmployeeService service = new EmployeeServiceImpl();
-		int rows = service.updateEmployee(emp);
+		int rows = service.updateEmployee(emp, "Testing");
 		if(rows > 0)
 			System.out.println("updated");
 		else
 			System.out.println("not updated");
 	}
-
 }

@@ -65,6 +65,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pst.setDouble(2, emp.getSalary());
 			pst.setDate(3, DateConversion.convertDate(emp.getDoj()));
 			pst.setInt(4, emp.getEmpcode());
+			pst.setInt(5, emp.getDeptno());
 			rows = pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
