@@ -7,7 +7,7 @@ public class GetDeptName {
 
 	public static void main(String[] args) {
 		DepartmentService service = new DepartmentServiceImpl();
-		String deptName = service.getDeptName(10);
+		String deptName = service.getDeptName(20);
 		System.out.println(deptName);
 	}
 }

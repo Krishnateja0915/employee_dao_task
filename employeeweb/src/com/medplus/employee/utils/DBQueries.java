@@ -10,4 +10,7 @@ public class DBQueries {
 	public static final String GETDEPTNOBYDEPTNAME = "select * from department where dep_name = ?";
 	public static final String GETDEPTNAMEBYDEPTNO = "select dep_name from department where deptno = ?";
 	public static final String GETALLDEPARTMENTS = "select * from department";
+	public static final String GETUSER = "select * from user where user_name = ?";
+	public static final String UPDATEDEPT = "update department set dep_name=?, location=? where deptno=?";
+	public static final String GETDEPTBYNO = "select * from department where deptno = ?";
 }

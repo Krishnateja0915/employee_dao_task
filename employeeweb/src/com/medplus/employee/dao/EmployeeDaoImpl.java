@@ -1,6 +1,7 @@
 package com.medplus.employee.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,6 @@ import java.util.List;
 import com.medplus.employee.beans.Employee;
 import com.medplus.employee.utils.DBConnection;
 import com.medplus.employee.utils.DBQueries;
-import com.medplus.employee.utils.DateConversion;
 
 public class EmployeeDaoImpl implements EmployeeDao{
 	private Connection conn = null;
@@ -26,7 +26,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pst.setInt(1, employee.getEmpcode());
 			pst.setString(2, employee.getEmpname());
 			pst.setDouble(3, employee.getSalary());
-			pst.setDate(4, DateConversion.convertDate(employee.getDoj()));
+			pst.setDate(4, Date.valueOf(employee.getDoj()));
 			pst.setInt(5, employee.getDeptno());
 			rows = pst.executeUpdate();
 		} catch (SQLException e) {
@@ -63,9 +63,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pst = conn.prepareStatement(DBQueries.UPDATEEMP);
 			pst.setString(1, emp.getEmpname());
 			pst.setDouble(2, emp.getSalary());
-			pst.setDate(3, DateConversion.convertDate(emp.getDoj()));
-			pst.setInt(4, emp.getEmpcode());
-			pst.setInt(5, emp.getDeptno());
+			pst.setDate(3, Date.valueOf(emp.getDoj()));
+			pst.setInt(5, emp.getEmpcode());
+			pst.setInt(4, emp.getDeptno());
 			rows = pst.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
